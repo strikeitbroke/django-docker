@@ -14,7 +14,6 @@ class ArticleByAuthorView(generics.ListAPIView):
     serializer_class = ArticleSerializer
 
     def get_queryset(self):
-        import pdb; pdb.set_trace()
         name = self.kwargs.get("name")
         author = get_object_or_404(Author, name=name)
         return author.authors_to_blog_article.all()
